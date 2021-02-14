@@ -1,4 +1,3 @@
-// Toros
 
 package utilities;
 
@@ -44,15 +43,15 @@ public enum Gender {
     public static Gender getGenderByTextCode(String code) {
         for (Gender gender : Gender.values()) {
 
-            System.out.println("The code input is: " + code);
             switch (code.toLowerCase()) {
+                
                 case "male" -> {
                     return Gender.MALE;
                 }
                 case "female" -> {
                     return Gender.FEMALE;
                 }
-                case "unknown" -> {
+                case "other" -> {
                     return Gender.OTHER;
                 }
                 default -> {
@@ -82,7 +81,7 @@ public enum Gender {
         
         System.out.println("1. Male");
         System.out.println("2. Female");
-        System.out.println("3. Unknown");
+        System.out.println("3. other");
         
         String genderChoice = EmployeeManagement.sc.nextLine();
         

@@ -74,9 +74,9 @@ public class GraphicDesigner extends Employee implements Manageable {
     public void genderCounter() {
 
         if (this.getGender().getText().equalsIgnoreCase("male")) {
-            noOfMaleGraphicDesigners += 1;
+            noOfMaleGraphicDesigners++;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
-            noOfFemaleGraphicDesigners += 1;
+            noOfFemaleGraphicDesigners++;
         }
     }
 
@@ -85,9 +85,11 @@ public class GraphicDesigner extends Employee implements Manageable {
 
         noOfGraphicDesigners--;
         if (this.getGender().getText().equalsIgnoreCase("male")) {
-            noOfMaleGraphicDesigners -= 1;
+            noOfMaleGraphicDesigners--;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
-            noOfFemaleGraphicDesigners -= 1;
+            noOfFemaleGraphicDesigners--;
+        }else{ 
+            Employee.noOfOtherGenderEmployees--;
         }
     }
 

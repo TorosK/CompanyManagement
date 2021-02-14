@@ -17,7 +17,7 @@ public class Employee {
     private double salaryWithBonus;
     private static double noOfMaleEmployees;
     private static double noOfFemaleEmployees;
-    private static double noOfUnknownGenderEmployees;
+    static double noOfOtherGenderEmployees;
 
     public Employee() {
         this.employeeNr = employeeNumberGenerator++;
@@ -36,7 +36,7 @@ public class Employee {
         } else if (gender.getText().equalsIgnoreCase("female")) {
             noOfFemaleEmployees++;
         }else{
-            noOfUnknownGenderEmployees++;
+            noOfOtherGenderEmployees++;
         }
 
     }
@@ -137,7 +137,7 @@ public class Employee {
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
             noOfFemaleEmployees++;
         }else {
-            noOfUnknownGenderEmployees++;
+            noOfOtherGenderEmployees++;
         }
 
     }

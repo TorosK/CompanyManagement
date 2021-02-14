@@ -77,9 +77,11 @@ public class TestSpecialist extends Employee implements Manageable {
 
         noOfTestSpecialists--;
         if (this.getGender().getText().equalsIgnoreCase("male")) {
-            noOfMaleTestSpecialists -= 1;
+            noOfMaleTestSpecialists--;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
-            noOfFemaleTestSpecialists -= 1;
+            noOfFemaleTestSpecialists--;
+        } else{ 
+            Employee.noOfOtherGenderEmployees--;
         }
     }
 
@@ -92,9 +94,9 @@ public class TestSpecialist extends Employee implements Manageable {
         this.setISTQBcertified(readBoolean());
 
         if (this.getGender().getText().equalsIgnoreCase("male")) {
-            noOfMaleTestSpecialists += 1;
+            noOfMaleTestSpecialists++;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
-            noOfFemaleTestSpecialists += 1;
+            noOfFemaleTestSpecialists++;
         }
 
         employees.add(this);

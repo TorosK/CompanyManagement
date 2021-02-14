@@ -96,9 +96,9 @@ public class Programmer extends Employee implements Manageable {
     public void genderCounter() {
         
         if (this.getGender().getText().equalsIgnoreCase("male")) {
-            noOfMaleProgrammers += 1;
+            noOfMaleProgrammers++;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
-            noOfFemaleProgrammers += 1;
+            noOfFemaleProgrammers++;
         }
     }
     
@@ -107,9 +107,11 @@ public class Programmer extends Employee implements Manageable {
         
         noOfProgrammers--;
         if (this.getGender().getText().equalsIgnoreCase("male")) {
-            noOfMaleProgrammers -= 1;
+            noOfMaleProgrammers--;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
-            noOfFemaleProgrammers -= 1;
+            noOfFemaleProgrammers--;
+        }else{
+            Employee.noOfOtherGenderEmployees--;
         }
     }
 

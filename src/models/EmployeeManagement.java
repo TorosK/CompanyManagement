@@ -138,6 +138,11 @@ public class EmployeeManagement {
 
         System.out.printf("Male programmers percentage: %.2f\n", (double) ((TestSpecialist.getNoOfMaleTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()));
         System.out.printf("Female programmers percentage : %.2f\n", (double) ((TestSpecialist.getNoOfFemaleTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()));
+
+        System.out.println("\nPrecentage distribution among other category for gender");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("Other gender for employees percentage: %.2f\n", (double) ((Employee.noOfOtherGenderEmployees * 100) / employees.size()));
+
     }
 
     public static void findHighestPaidEmployee() {
