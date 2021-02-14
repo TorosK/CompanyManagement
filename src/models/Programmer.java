@@ -19,7 +19,7 @@ public class Programmer extends Employee implements Manageable {
 
     {
 //        System.out.println("Number of Programmers" + noOfProgrammers);
-        ++noOfProgrammers;
+        noOfProgrammers++;
 //        System.out.println("\n\nAn Object of Programmer class is created\n");
 //        
 //        System.out.println("\nNumber of Programmers" + noOfProgrammers);
@@ -34,7 +34,6 @@ public class Programmer extends Employee implements Manageable {
     public Programmer(String codeLang, String firstName, String lastName, Gender gender, double salary) {
         super(firstName, lastName, gender, salary);
         this.codeLang = codeLang;
-        genderCounter();
 
     }
 
@@ -42,24 +41,12 @@ public class Programmer extends Employee implements Manageable {
         return noOfProgrammers;
     }
 
-    public static void setNoOfProgrammers(int aNoOfProgrammers) {
-        noOfProgrammers = aNoOfProgrammers;
-    }
-
     public static double getNoOfMaleProgrammers() {
         return noOfMaleProgrammers;
     }
 
-    public static void setNoOfMaleProgrammers(int aNoOfMaleProgrammers) {
-        noOfMaleProgrammers = aNoOfMaleProgrammers;
-    }
-
     public static double getNoOfFemaleProgrammers() {
         return noOfFemaleProgrammers;
-    }
-
-    public static void setNoOfFemaleProgrammers(int aNoOfFemaleProgrammers) {
-        noOfFemaleProgrammers = aNoOfFemaleProgrammers;
     }
 
     public String getCodeLang() {
@@ -86,8 +73,6 @@ public class Programmer extends Employee implements Manageable {
 
         System.out.println("Input programming language:");
         this.setCodeLang(sc.nextLine());
-
-        genderCounter();
 
         employees.add(this);
     }

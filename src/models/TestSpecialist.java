@@ -16,7 +16,7 @@ public class TestSpecialist extends Employee implements Manageable {
     private static double noOfFemaleTestSpecialists;
 
     {
-        noOfTestSpecialists += 1;
+        noOfTestSpecialists++;
     }
 
     public TestSpecialist() {
@@ -26,8 +26,6 @@ public class TestSpecialist extends Employee implements Manageable {
     public TestSpecialist(boolean ISTQBcertified, String firstName, String lastName, Gender gender, double salary) {
         super(firstName, lastName, gender, salary);
         this.ISTQBcertified = ISTQBcertified;
-
-        this.genderCounter();
 
     }
 

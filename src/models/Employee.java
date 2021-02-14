@@ -31,13 +31,7 @@ public class Employee {
         this.salary = salary;
         this.salaryWithBonus = salary;
 
-        if (gender.getText().equalsIgnoreCase("male")) {
-            noOfMaleEmployees++;
-        } else if (gender.getText().equalsIgnoreCase("female")) {
-            noOfFemaleEmployees++;
-        }else{
-            noOfOtherGenderEmployees++;
-        }
+        genderCounter();
 
     }
 
@@ -47,7 +41,7 @@ public class Employee {
     }
 
     public String getName() {
-     
+
         return this.firstName.concat(" ").concat(lastName);
     }
 
@@ -83,7 +77,6 @@ public class Employee {
         this.employeeNr = employeeNr;
     }
 
-
     public Gender getGender() {
         return gender;
     }
@@ -115,9 +108,25 @@ public class Employee {
     }
 
     public void genderCounter() {
+
+        if (this.getGender().getText().equalsIgnoreCase("male")) {
+            noOfMaleEmployees++;
+        } else if (this.getGender().getText().equalsIgnoreCase("female")) {
+            noOfFemaleEmployees++;
+        } else {
+            noOfOtherGenderEmployees++;
+        }
     }
 
     public void genderDecrementer() {
+        
+        if (this.getGender().getText().equalsIgnoreCase("male")) {
+            noOfMaleEmployees--;
+        } else if (this.getGender().getText().equalsIgnoreCase("female")) {
+            noOfFemaleEmployees--;
+        } else {
+            noOfOtherGenderEmployees--;
+        }
     }
 
     public void addEmployee() {
@@ -131,15 +140,8 @@ public class Employee {
         System.out.println("Input salary:");
         this.setSalary(readDouble());
         this.bonus();
-
-        if (this.getGender().getText().equalsIgnoreCase("male")) {
-            noOfMaleEmployees++;
-        } else if (this.getGender().getText().equalsIgnoreCase("female")) {
-            noOfFemaleEmployees++;
-        }else {
-            noOfOtherGenderEmployees++;
-        }
-
+        this.genderCounter();
+        
     }
 
     @Override

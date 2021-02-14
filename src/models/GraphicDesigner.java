@@ -13,7 +13,7 @@ public class GraphicDesigner extends Employee implements Manageable {
     private static double noOfFemaleGraphicDesigners;
 
     {
-        noOfGraphicDesigners += 1;
+        noOfGraphicDesigners++;
     }
 
     public GraphicDesigner() {
@@ -23,7 +23,6 @@ public class GraphicDesigner extends Employee implements Manageable {
     public GraphicDesigner(String techStack, String firstName, String lastName, Gender gender, double salary) {
         super(firstName, lastName , gender, salary);
         this.techStack = techStack;
-        this.genderCounter();
 
     }
 
@@ -66,7 +65,6 @@ public class GraphicDesigner extends Employee implements Manageable {
 
         System.out.println("Input Tech Stack:");
         this.setTechStack(sc.nextLine());
-        this.genderCounter();
         employees.add(this);
     }
 
