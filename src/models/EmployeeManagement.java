@@ -116,32 +116,38 @@ public class EmployeeManagement {
 
     public static void genderDistribution() {
 
-        System.out.printf("Male employees percentage: %.2f\n", (double) ((Employee.getNoOfMaleEmployees() * 100) / employees.size()));
-        System.out.printf("Female employees percentage : %.2f\n", (double) ((Employee.getNoOfFemaleEmployees() * 100) / employees.size()));
+        System.out.println("Male employees percentage: " + df.format((Employee.getNoOfMaleEmployees() * 100) / employees.size()) + "%");
+        System.out.println("FeMale employees percentage: " + df.format((Employee.getNoOfFemaleEmployees() * 100) / employees.size()) + "%");
 
         System.out.println("\nGender distribution among employees respective their professional role");
 
         System.out.println("\nPrecentage distribution among Programmers");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
 
-        System.out.printf("Male programmers percentage: %.2f\n", (double) ((Programmer.getNoOfMaleProgrammers() * 100) / Programmer.getNoOfProgrammers()));
-        System.out.printf("Female programmers percentage : %.2f\n", (double) ((Programmer.getNoOfFemaleProgrammers() * 100) / Programmer.getNoOfProgrammers()));
+        System.out.println("Programmers percentage: " + df.format((Programmer.getNoOfProgrammers() * 100) / employees.size()) + "%" );
 
-        System.out.println("\nPrecentage distribution among Graphic Designers");
+        System.out.println("Male programmers percentage: " + df.format((Programmer.getNoOfMaleProgrammers() * 100) / Programmer.getNoOfProgrammers()) + "%");
+        System.out.println("Female programmers percentage: " + df.format((Programmer.getNoOfFemaleProgrammers() * 100) / Programmer.getNoOfProgrammers()) + "%");
+
+        System.out.println("\nPrecentage distribution among graphicDesigners");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
 
-        System.out.printf("Male graphic designres percentage: %.2f\n", (double) ((GraphicDesigner.getNoOfMaleGraphicDesigners() * 100) / GraphicDesigner.getNoOfGraphicDesigners()));
-        System.out.printf("Female graphic designers percentage : %.2f\n", (double) ((GraphicDesigner.getNoOfFemaleGraphicDesigners() * 100) / GraphicDesigner.getNoOfGraphicDesigners()));
+        System.out.println("GraphicDesigners percentage: " + df.format((GraphicDesigner.getNoOfGraphicDesigners() * 100) / employees.size()) + "%" );
 
-        System.out.println("\nPrecentage distribution among Test Specialists");
+        System.out.println("Male graphicDesigners percentage: " + df.format((GraphicDesigner.getNoOfMaleGraphicDesigners() * 100) / GraphicDesigner.getNoOfGraphicDesigners()) + "%");
+        System.out.println("Female graphicDesigners percentage: " + df.format((GraphicDesigner.getNoOfFemaleGraphicDesigners() * 100) / GraphicDesigner.getNoOfGraphicDesigners()) + "%");
+
+        System.out.println("\nPrecentage distribution among testSpecialists");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
 
-        System.out.printf("Male programmers percentage: %.2f\n", (double) ((TestSpecialist.getNoOfMaleTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()));
-        System.out.printf("Female programmers percentage : %.2f\n", (double) ((TestSpecialist.getNoOfFemaleTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()));
+        System.out.println("TestSpecialists percentage: " + df.format((TestSpecialist.getNoOfTestSpecialists() * 100) / employees.size()) + "%" );
+
+        System.out.println("Male testSpecialists percentage: " + df.format((TestSpecialist.getNoOfMaleTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()) + "%");
+        System.out.println("Female testSpecialists percentage: " + df.format((TestSpecialist.getNoOfFemaleTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()) + "%");
 
         System.out.println("\nPrecentage distribution among other category for gender");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("Other gender for employees percentage: %.2f\n", (double) ((Employee.noOfOtherGenderEmployees * 100) / employees.size()));
+        System.out.println("Other gender for employees percentage: " + df.format((Employee.noOfOtherGenderEmployees * 100) / employees.size()) + "%" );
 
     }
 
