@@ -51,7 +51,7 @@ public enum Gender {
                     return Gender.FEMALE;
                 }
                 case "unknown" -> {
-                    return Gender.UNKNOWN;
+                    return Gender.OTHER;
                 }
                 default -> {
                 }
