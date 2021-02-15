@@ -31,7 +31,7 @@ public class Employee {
         this.salary = salary;
         this.salaryWithBonus = salary;
 
-        genderCounter();
+        this.genderCounter();
 
     }
 

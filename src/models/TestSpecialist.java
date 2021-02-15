@@ -62,7 +62,7 @@ public class TestSpecialist extends Employee implements Manageable {
     }
 
     public void genderCounter() {
-
+        super.genderCounter();
         if (this.getGender().getText().equalsIgnoreCase("male")) {
             noOfMaleTestSpecialists += 1;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
@@ -72,13 +72,13 @@ public class TestSpecialist extends Employee implements Manageable {
 
     @Override
     public void genderDecrementer() {
-
+        super.genderDecrementer();
         noOfTestSpecialists--;
         if (this.getGender().getText().equalsIgnoreCase("male")) {
             noOfMaleTestSpecialists--;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
             noOfFemaleTestSpecialists--;
-        } else{ 
+        } else {
             Employee.noOfOtherGenderEmployees--;
         }
     }

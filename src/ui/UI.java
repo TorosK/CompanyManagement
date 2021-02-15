@@ -45,7 +45,7 @@ public class UI {
             System.out.println("\n1. Add employee");
             System.out.println("2. Update employee");
             System.out.println("3. Remove employee by ID");
-            System.out.println("4. Remove employee by name");
+            System.out.println("4. Remove employee by full name");
             System.out.println("5. Show information about all employees");
             System.out.println("6. Show information about a specific employee");
             System.out.println("0. Go back to previous menu");
@@ -175,23 +175,28 @@ public class UI {
     private static void sortingMenu() {
 
         boolean boolSortingMenu = true;
+        
         do {
-            System.out.println("\nPlease select the sorting criteria for employee?");
-            System.out.println("1. Ascending sort by Firstname ");
+            System.out.println("\nPlease select the sorting criteria for the employees?");
+            System.out.println("1. Ascending sort by First name ");
             System.out.println("2. Descending sort by First name ");
             System.out.println("3. Ascending sort by Last name ");
             System.out.println("4. Descending sort by Last name ");
             System.out.println("5. Incremental sort by Salary ");
             System.out.println("6. Decremental sort by Salary ");
+            System.out.println("7. Sort by Employee Number low to high ");
+            System.out.println("8. Sort by Employee Number high to low ");
+           
+            
             System.out.println("0. Go back to previous menu");
 
             switch (readInt()) {
                 case 1 -> {
-                    Comparator<Employee> sortByFirstNameAcending = Comparator.comparing(e -> e.getFirstName());
-                    employees.sort(sortByFirstNameAcending);
+                    Comparator<Employee> sortByFirstNameAscending = Comparator.comparing(e -> e.getFirstName());
+                    employees.sort(sortByFirstNameAscending);
 
                     System.out.println("\n====================================================================================================");
-                    System.out.println("\t\t\t\t\tSorted by first name Ascending");
+                    System.out.println("\t\t\t\t\tSorted by first name ascending");
                     System.out.println("====================================================================================================");
 
                     tableHeader();
@@ -206,7 +211,7 @@ public class UI {
                     employees.sort(sortByFirstNameDescending.reversed());
 
                     System.out.println("\n====================================================================================================");
-                    System.out.println("\t\t\t\t\tSorted by first name Descending");
+                    System.out.println("\t\t\t\t\tSorted by first name descending");
                     System.out.println("====================================================================================================");
 
                     tableHeader();
@@ -217,11 +222,11 @@ public class UI {
                 }
 
                 case 3 -> {
-                    Comparator<Employee> sortByLastNameAcending = Comparator.comparing(e -> e.getLastName());
-                    employees.sort(sortByLastNameAcending);
+                    Comparator<Employee> sortByLastNameAscending = Comparator.comparing(e -> e.getLastName());
+                    employees.sort(sortByLastNameAscending);
 
                     System.out.println("\n====================================================================================================");
-                    System.out.println("\t\t\t\t\tSorted by last name Ascending");
+                    System.out.println("\t\t\t\t\tSorted by last name ascending");
                     System.out.println("====================================================================================================");
 
                     tableHeader();
@@ -236,7 +241,7 @@ public class UI {
                     employees.sort(sortByLastNameDescending.reversed());
 
                     System.out.println("\n====================================================================================================");
-                    System.out.println("\t\t\t\t\tSorted by last name Descending");
+                    System.out.println("\t\t\t\t\tSorted by last name descending");
                     System.out.println("====================================================================================================");
 
                     tableHeader();
@@ -276,6 +281,37 @@ public class UI {
                         System.out.println(employee);
                     });
                 }
+                
+                case 7 -> {
+                    Comparator<Employee> sortByEmployeeNrLowToHigh = Comparator.comparing(e -> e.getEmployeeNr());
+                    employees.sort(sortByEmployeeNrLowToHigh);
+                    
+                    System.out.println("\n====================================================================================================");
+                    System.out.println("\t\t\t\t\tSorted by employee number in incremental order");
+                    System.out.println("====================================================================================================");
+                    
+                    tableHeader();
+                    
+                    employees.forEach(employee -> {
+                        System.out.println(employee);
+                    });
+                }
+                
+                case 8 -> {
+                    Comparator<Employee> sortByEmployeeNrHighToLow = Comparator.comparing(e -> e.getEmployeeNr());
+                    employees.sort(sortByEmployeeNrHighToLow.reversed());
+                    
+                    System.out.println("\n====================================================================================================");
+                    System.out.println("\t\t\t\t\tSorted by employee number in decremental order");
+                    System.out.println("====================================================================================================");
+                    
+                    tableHeader();
+                    
+                    employees.forEach(employee -> {
+                        System.out.println(employee);
+                    });
+                }
+                
                 case 0 -> {
                     boolSortingMenu = false;
                 }

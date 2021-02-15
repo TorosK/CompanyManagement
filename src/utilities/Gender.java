@@ -81,7 +81,7 @@ public enum Gender {
         
         System.out.println("1. Male");
         System.out.println("2. Female");
-        System.out.println("3. other");
+        System.out.println("3. Other");
         
         String genderChoice = EmployeeManagement.sc.nextLine();
         

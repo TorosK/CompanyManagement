@@ -79,23 +79,24 @@ public class Programmer extends Employee implements Manageable {
 
     @Override
     public void genderCounter() {
-        
+        super.genderCounter();
         if (this.getGender().getText().equalsIgnoreCase("male")) {
             noOfMaleProgrammers++;
+
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
             noOfFemaleProgrammers++;
         }
     }
-    
+
     @Override
     public void genderDecrementer() {
-        
+        super.genderDecrementer();
         noOfProgrammers--;
         if (this.getGender().getText().equalsIgnoreCase("male")) {
             noOfMaleProgrammers--;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
             noOfFemaleProgrammers--;
-        }else{
+        } else {
             Employee.noOfOtherGenderEmployees--;
         }
     }
@@ -127,8 +128,10 @@ public class Programmer extends Employee implements Manageable {
                 System.out.print("New code language: ");
                 this.setCodeLang(sc.nextLine());
             }
-            case 0 -> System.exit(0);
-            default -> System.out.println("Wrong input. Please try again.");
+            case 0 ->
+                System.exit(0);
+            default ->
+                System.out.println("Wrong input. Please try again.");
         }
     }
 

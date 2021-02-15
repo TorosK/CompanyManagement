@@ -21,7 +21,7 @@ public class GraphicDesigner extends Employee implements Manageable {
     }
 
     public GraphicDesigner(String techStack, String firstName, String lastName, Gender gender, double salary) {
-        super(firstName, lastName , gender, salary);
+        super(firstName, lastName, gender, salary);
         this.techStack = techStack;
 
     }
@@ -70,7 +70,7 @@ public class GraphicDesigner extends Employee implements Manageable {
 
     @Override
     public void genderCounter() {
-
+        super.genderCounter();
         if (this.getGender().getText().equalsIgnoreCase("male")) {
             noOfMaleGraphicDesigners++;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
@@ -80,13 +80,13 @@ public class GraphicDesigner extends Employee implements Manageable {
 
     @Override
     public void genderDecrementer() {
-
+        super.genderDecrementer();
         noOfGraphicDesigners--;
         if (this.getGender().getText().equalsIgnoreCase("male")) {
             noOfMaleGraphicDesigners--;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
             noOfFemaleGraphicDesigners--;
-        }else{ 
+        } else {
             Employee.noOfOtherGenderEmployees--;
         }
     }
