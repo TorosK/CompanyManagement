@@ -11,7 +11,9 @@ import static utilities.Utilities.*;
 
 public class EmployeeManagement {
 
-    public static Scanner sc = new Scanner(System.in);
+    // nedan "Windows-1252" i Scanner är för att Scanner ska acceptera svenska karaktärer som ÅÄÖ
+    public static Scanner sc = new Scanner(System.in, "Windows-1252");
+    // System.setProperty("file.encoding", "UTF-8");
     public static ArrayList<Employee> employees = new ArrayList<>();
     public static DecimalFormat df = new DecimalFormat("###.##");
 
@@ -82,7 +84,7 @@ public class EmployeeManagement {
         System.out.println("Please input full name of employee:");
         String empName = sc.nextLine();
         System.out.println(empName);
-        System.out.println(employees.get(0).getName());
+//        System.out.println(employees.get(0).getName());
 
 //        Predicate<Employee> condition = employee -> employee.getName().equalsIgnoreCase(empName);
 //        employees.removeIf(employee -> employee.getName().equalsIgnoreCase(empName));
