@@ -1,5 +1,6 @@
+// Toros & Farrukh 
+// 2021 feb 16
 package models;
-//
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
