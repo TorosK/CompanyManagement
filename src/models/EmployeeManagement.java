@@ -52,9 +52,13 @@ public class EmployeeManagement {
 
         System.out.println("Please input employee number:");
         e = getEmployeeById(readInt());
-        employees.remove(e);
-
-        e.genderDecrementer();
+        if (e != null) {
+            e.genderDecrementer();
+            employees.remove(e);
+            System.out.println("\n=============================");
+            System.out.println("The Employee has been deleted");
+            System.out.println("=============================\n");
+        }
 
         printAllEmployees();
     }
@@ -68,6 +72,11 @@ public class EmployeeManagement {
                 return (employees.get(i));
             }
         }
+        
+        System.out.println("\n====================================");
+        System.out.println("Employee not found, Please try again!");
+        System.out.println("=====================================\n");
+        
         return null;
     }
 
