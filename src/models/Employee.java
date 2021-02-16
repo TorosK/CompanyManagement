@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Comparator;
 import static utilities.Utilities.*;
 import static models.EmployeeManagement.sc;
 import utilities.Gender;
@@ -18,6 +19,16 @@ public class Employee {
     private static double noOfMaleEmployees;
     private static double noOfFemaleEmployees;
     static double noOfOtherGenderEmployees;
+
+    public static Comparator<Employee> sortByNameAndSalary = Comparator.comparing(Employee::getName).thenComparing(Employee::getSalary);
+    public static Comparator<Employee> sortByFirstNameAscending = Comparator.comparing(e -> e.getFirstName());
+    public static Comparator<Employee> sortByFirstNameDescending = Comparator.comparing(e -> e.getFirstName());
+    public static Comparator<Employee> sortByLastNameAscending = Comparator.comparing(e -> e.getLastName());
+    public static Comparator<Employee> sortByLastNameDescending = Comparator.comparing(e -> e.getLastName());
+    public static Comparator<Employee> sortBySalaryIncremental = Comparator.comparing(e -> e.getSalary());
+    public static Comparator<Employee> sortBySalaryDecremental = Comparator.comparing(e -> e.getSalary());
+    public static Comparator<Employee> sortByEmployeeNrLowToHigh = Comparator.comparing(e -> e.getEmployeeNr());
+    public static Comparator<Employee> sortByEmployeeNrHighToLow = Comparator.comparing(e -> e.getEmployeeNr());
 
     public Employee() {
         this.employeeNr = employeeNumberGenerator++;
@@ -41,8 +52,8 @@ public class Employee {
     }
 
     public String getName() {
-
         return this.firstName.concat(" ").concat(lastName);
+
     }
 
     public static double getNoOfMaleEmployees() {
@@ -119,7 +130,7 @@ public class Employee {
     }
 
     public void genderDecrementer() {
-        
+
         if (this.getGender().getText().equalsIgnoreCase("male")) {
             noOfMaleEmployees--;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
@@ -141,7 +152,7 @@ public class Employee {
         this.setSalary(readDouble());
         this.bonus();
         this.genderCounter();
-        
+
     }
 
     @Override

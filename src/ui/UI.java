@@ -1,5 +1,6 @@
 package ui;
 
+import java.util.Collections;
 import java.util.Comparator;
 import models.Employee;
 import models.GraphicDesigner;
@@ -9,10 +10,10 @@ import models.TestSpecialist;
 import static utilities.Utilities.*;
 
 public class UI {
-    
 
     //The first menu runs when the program starts.
     public static void runProgram() {
+
         while (true) {
 
             System.out.println("\nWelcome to the Employee Management System!");
@@ -108,9 +109,9 @@ public class UI {
     } //Generates bonus Menu for calculation of Bonus based on different professional roles.
 
     public static void bonusMenu() {
-        
+
         boolean boolBonusMenu = true;
-        
+
         do {
             System.out.println("\n1. Total bonus for all employees ");
             System.out.println("2. Total bonus for all programmers");
@@ -134,48 +135,48 @@ public class UI {
                 default ->
                     System.out.println("Invalid input. Please try again.");
             }
-        }while (boolBonusMenu);
+        } while (boolBonusMenu);
     }
 
     //Adds the employee by asking different fields of employee from User.
     public static void addEmployeeByUser() {
-        
+
         boolean boolAddEmployeeByUserMenu = true;
-        do{
-        System.out.println("\nWhat kind of employee?");
-        System.out.println("1. Programmer");
-        System.out.println("2. Graphic Designer");
-        System.out.println("3. Test Specialist");
-        System.out.println("0. Go back to previous menu");
-        switch (readInt()) {
-            case 1 -> {
-                Programmer p = new Programmer();
-                p.addEmployee();
+        do {
+            System.out.println("\nWhat kind of employee?");
+            System.out.println("1. Programmer");
+            System.out.println("2. Graphic Designer");
+            System.out.println("3. Test Specialist");
+            System.out.println("0. Go back to previous menu");
+            switch (readInt()) {
+                case 1 -> {
+                    Programmer p = new Programmer();
+                    p.addEmployee();
+                }
+                case 2 -> {
+                    GraphicDesigner g = new GraphicDesigner();
+                    g.addEmployee();
+                }
+                case 3 -> {
+                    TestSpecialist t = new TestSpecialist();
+                    t.addEmployee();
+                }
+                case 0 -> {
+                    boolAddEmployeeByUserMenu = false;
+                }
+                default ->
+                    System.out.println("Invalid input. Please try again.");
             }
-            case 2 -> {
-                GraphicDesigner g = new GraphicDesigner();
-                g.addEmployee();
-            }
-            case 3 -> {
-                TestSpecialist t = new TestSpecialist();
-                t.addEmployee();
-            }
-            case 0 -> {
-                boolAddEmployeeByUserMenu = false;
-            }
-            default ->
-                System.out.println("Invalid input. Please try again.");
-        }
-        
-        printAllEmployees();
-        System.out.println("");
-        }while(boolAddEmployeeByUserMenu);
+
+            printAllEmployees();
+            System.out.println("");
+        } while (boolAddEmployeeByUserMenu);
     }
 
     private static void sortingMenu() {
 
         boolean boolSortingMenu = true;
-        
+
         do {
             System.out.println("\nPlease select the sorting criteria for the employees?");
             System.out.println("1. Ascending sort by First name ");
@@ -186,132 +187,107 @@ public class UI {
             System.out.println("6. Decremental sort by Salary ");
             System.out.println("7. Sort by Employee Number low to high ");
             System.out.println("8. Sort by Employee Number high to low ");
-           
-            
+            System.out.println("9. Sort by Employee name and then salary ");
+
             System.out.println("0. Go back to previous menu");
 
             switch (readInt()) {
                 case 1 -> {
-                    Comparator<Employee> sortByFirstNameAscending = Comparator.comparing(e -> e.getFirstName());
-                    employees.sort(sortByFirstNameAscending);
+
+                    employees.sort(Employee.sortByFirstNameAscending);
 
                     System.out.println("\n====================================================================================================");
                     System.out.println("\t\t\t\t\tSorted by first name ascending");
                     System.out.println("====================================================================================================");
 
-                    tableHeader();
-
-                    employees.forEach(employee -> {
-                        System.out.println(employee);
-                    });
+                    printAllEmployees();
                 }
                 case 2 -> {
 
-                    Comparator<Employee> sortByFirstNameDescending = Comparator.comparing(e -> e.getFirstName());
-                    employees.sort(sortByFirstNameDescending.reversed());
+                    employees.sort(Employee.sortByFirstNameDescending.reversed());
 
                     System.out.println("\n====================================================================================================");
                     System.out.println("\t\t\t\t\tSorted by first name descending");
                     System.out.println("====================================================================================================");
 
-                    tableHeader();
-
-                    employees.forEach(employee -> {
-                        System.out.println(employee);
-                    });
+                    printAllEmployees();
                 }
 
                 case 3 -> {
-                    Comparator<Employee> sortByLastNameAscending = Comparator.comparing(e -> e.getLastName());
-                    employees.sort(sortByLastNameAscending);
+
+                    employees.sort(Employee.sortByLastNameAscending);
 
                     System.out.println("\n====================================================================================================");
                     System.out.println("\t\t\t\t\tSorted by last name ascending");
                     System.out.println("====================================================================================================");
 
-                    tableHeader();
-
-                    employees.forEach(employee -> {
-                        System.out.println(employee);
-                    });
+                    printAllEmployees();
                 }
                 case 4 -> {
 
-                    Comparator<Employee> sortByLastNameDescending = Comparator.comparing(e -> e.getLastName());
-                    employees.sort(sortByLastNameDescending.reversed());
+                    employees.sort(Employee.sortByLastNameDescending.reversed());
 
                     System.out.println("\n====================================================================================================");
                     System.out.println("\t\t\t\t\tSorted by last name descending");
                     System.out.println("====================================================================================================");
 
-                    tableHeader();
-
-                    employees.forEach(employee -> {
-                        System.out.println(employee);
-                    });
+                    printAllEmployees();
                 }
 
                 case 5 -> {
 
-                    Comparator<Employee> sortBySalaryIncremental = Comparator.comparing(e -> e.getSalary());
-                    employees.sort(sortBySalaryIncremental);
-
-                    tableHeader();
+                    employees.sort(Employee.sortBySalaryIncremental);
 
                     System.out.println("\n====================================================================================================");
                     System.out.println("\t\t\t\t\tSorted by salary in incremental order");
                     System.out.println("====================================================================================================");
 
-                    employees.forEach(employee -> {
-                        System.out.println(employee);
-                    });
+                    printAllEmployees();
                 }
                 case 6 -> {
 
-                    Comparator<Employee> sortBySalaryDecremental = Comparator.comparing(e -> e.getSalary());
-                    employees.sort(sortBySalaryDecremental.reversed());
+                    employees.sort(Employee.sortBySalaryDecremental.reversed());
 
                     System.out.println("\n====================================================================================================");
                     System.out.println("\t\t\t\t\tSorted by salary in decremental order");
                     System.out.println("====================================================================================================");
 
-                    tableHeader();
-
-                    employees.forEach(employee -> {
-                        System.out.println(employee);
-                    });
+                    printAllEmployees();
                 }
-                
+
                 case 7 -> {
-                    Comparator<Employee> sortByEmployeeNrLowToHigh = Comparator.comparing(e -> e.getEmployeeNr());
-                    employees.sort(sortByEmployeeNrLowToHigh);
-                    
+
+                    employees.sort(Employee.sortByEmployeeNrLowToHigh);
+
                     System.out.println("\n====================================================================================================");
                     System.out.println("\t\t\t\t\tSorted by employee number in incremental order");
                     System.out.println("====================================================================================================");
-                    
-                    tableHeader();
-                    
-                    employees.forEach(employee -> {
-                        System.out.println(employee);
-                    });
+
+                    printAllEmployees();
                 }
-                
+
                 case 8 -> {
-                    Comparator<Employee> sortByEmployeeNrHighToLow = Comparator.comparing(e -> e.getEmployeeNr());
-                    employees.sort(sortByEmployeeNrHighToLow.reversed());
-                    
+
+                    employees.sort(Employee.sortByEmployeeNrHighToLow.reversed());
+
                     System.out.println("\n====================================================================================================");
                     System.out.println("\t\t\t\t\tSorted by employee number in decremental order");
                     System.out.println("====================================================================================================");
-                    
-                    tableHeader();
-                    
-                    employees.forEach(employee -> {
-                        System.out.println(employee);
-                    });
+
+                    printAllEmployees();
                 }
-                
+
+                case 9 -> {
+
+                    employees.sort(Employee.sortByNameAndSalary);
+
+                    System.out.println("\n====================================================================================================");
+                    System.out.println("\t\t\t\t\tSorted by employee name and then salary");
+                    System.out.println("====================================================================================================");
+
+                    printAllEmployees();
+                }
+
                 case 0 -> {
                     boolSortingMenu = false;
                 }

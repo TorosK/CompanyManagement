@@ -1,14 +1,12 @@
-
 package ui;
 
+import models.Employee;
 
 public class Main {
 
-
     public static void main(String[] args) {
-            
-            UI.runProgram();
-            
+
+        UI.runProgram();
+
     }
 }
-

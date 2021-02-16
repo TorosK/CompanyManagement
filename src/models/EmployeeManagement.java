@@ -75,11 +75,11 @@ public class EmployeeManagement {
                 return (employees.get(i));
             }
         }
-        
+
         System.out.println("\n====================================");
         System.out.println("Employee not found, Please try again!");
         System.out.println("=====================================\n");
-        
+
         return null;
     }
 
@@ -93,7 +93,7 @@ public class EmployeeManagement {
 
         System.out.println("Please input full name of employee:");
         String empName = sc.nextLine();
-        System.out.println(empName);
+//        System.out.println(empName);
 //        System.out.println(employees.get(0).getName());
 
 //        Predicate<Employee> condition = employee -> employee.getName().equalsIgnoreCase(empName);
