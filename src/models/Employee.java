@@ -7,6 +7,7 @@ import utilities.Gender;
 import static models.EmployeeManagement.df;
 
 public class Employee {
+    
 
     public static int employeeNumberGenerator = 1;
     private int employeeNr;
