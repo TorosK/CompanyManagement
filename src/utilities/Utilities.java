@@ -50,6 +50,7 @@ public class Utilities {
         while (loop) {
             try {
                 str = sc.nextLine();
+                double d = Double.parseDouble(str);
                 if (!((str.isBlank() || str.isEmpty() || isNumeric(str)))) {
                     loop = false;
                 } else {
@@ -60,6 +61,7 @@ public class Utilities {
                 sc.nextLine();
                 System.out.println("Invalid input. Please try again.");
             }
+
         } // loop
         return str;
 
