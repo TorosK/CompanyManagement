@@ -92,7 +92,7 @@ public class EmployeeManagement {
         printAllEmployees();
 
         System.out.println("Please input full name of employee:");
-        String empName = sc.nextLine();
+        String empName = readString();
 //        System.out.println(empName);
 //        System.out.println(employees.get(0).getName());
 

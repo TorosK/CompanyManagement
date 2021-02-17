@@ -81,7 +81,6 @@ public enum Gender {
         boolean boolReadGender = false;
 
         do {
-
             System.out.println("1. Male");
             System.out.println("2. Female");
             System.out.println("3. Other");
@@ -90,24 +89,25 @@ public enum Gender {
 
             if (Utilities.isNumeric(genderChoice)) {
 
-                employee.setGender(getGenderByNumericCode(Integer.parseInt(genderChoice)));
                 if (getGenderByNumericCode(Integer.parseInt(genderChoice)) == null) {
-                    boolReadGender = true;
- 
+                    
+                    boolReadGender = true; 
                     System.out.println("Invalid input. Please try again.");
 
                 } else {
+                    
                     employee.setGender(getGenderByNumericCode(Integer.parseInt(genderChoice)));
                     boolReadGender = false;
                 }
             } else {
 
                 if (getGenderByTextCode(genderChoice) == null) {
+                    
                     boolReadGender = true;
-
                     System.out.println("Invalid input. Please try again.");
 
                 } else {
+                    
                     employee.setGender(getGenderByTextCode(genderChoice));
                     boolReadGender = false;
                 }

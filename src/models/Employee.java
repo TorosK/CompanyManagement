@@ -7,7 +7,6 @@ import utilities.Gender;
 import static models.EmployeeManagement.df;
 
 public class Employee {
-    
 
     public static int employeeNumberGenerator = 1;
     private int employeeNr;
@@ -114,6 +113,22 @@ public class Employee {
         this.bonus = bonus;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public void bonus() {
     }
 
@@ -145,13 +160,14 @@ public class Employee {
     public void addEmployee() {
 
         System.out.println("Input First name:");
-        this.firstName = sc.nextLine();
+        this.firstName = readString();
         System.out.println("Input Last name:");
-        this.lastName = sc.nextLine();
+        this.lastName = readString();
         System.out.println("Input gender:");
         Gender.readGender(this);
         System.out.println("Input salary:");
         this.setSalary(readDouble());
+
         this.bonus();
         this.genderCounter();
 
@@ -163,21 +179,4 @@ public class Employee {
         return theStringTrimmer(String.valueOf(employeeNr)) + theStringTrimmer(getName()) + theStringTrimmer(gender.getText()) + theStringTrimmer(df.format(salary)) + theStringTrimmer(df.format(salaryWithBonus));
 
     }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
 }

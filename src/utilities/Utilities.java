@@ -10,7 +10,7 @@ public class Utilities {
 
     public static void loadDB() {
 
-        employees.add(new Programmer("Java", "Toros", "Kutlu", Gender.MALE , 50000.25));
+        employees.add(new Programmer("Java", "Toros", "Kutlu", Gender.MALE, 50000.25));
         employees.add(new Programmer("Python", "Åsa", "Karlsson", Gender.FEMALE, 60000.50));
         employees.add(new Programmer("C#", "Ängla", "Karlsson", Gender.FEMALE, 60000.50));
         employees.add(new GraphicDesigner("PhotoShop", "Sara", "Anderson", Gender.FEMALE, 40000));
@@ -40,6 +40,29 @@ public class Utilities {
             return false;
         }
         return true;
+    }
+
+    public static String readString() {
+
+        boolean loop = true;
+        String str = null;
+
+        while (loop) {
+            try {
+                str = sc.nextLine();
+                if (!((str.isBlank() || str.isEmpty() || isNumeric(str)))) {
+                    loop = false;
+                } else {
+                    System.out.println("Invalid input. Please try again.");
+                }
+
+            } catch (InputMismatchException e) {
+                sc.nextLine();
+                System.out.println("Invalid input. Please try again.");
+            }
+        } // loop
+        return str;
+
     }
 
     public static double readDouble() {

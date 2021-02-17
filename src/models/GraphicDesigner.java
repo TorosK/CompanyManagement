@@ -97,31 +97,28 @@ public class GraphicDesigner extends Employee implements Manageable {
         System.out.println("0. Exit");
 
         switch (readInt()) {
-            case 1:
+            case 1 -> {
                 System.out.print("New name: ");
                 System.out.println("Input First name:");
-                this.setFirstName(sc.nextLine());
+                this.setFirstName(readString());
                 System.out.println("Input Last name:");
-                this.setLastName(sc.nextLine());
-                break;
-            case 2:
+                this.setLastName(readString());
+            }
+            case 2 -> {
                 System.out.println("New gender: ");
                 Gender.readGender(this);
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.print("New salary: ");
                 this.setSalary(readDouble());
                 this.bonus();
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println("New tech stack: ");
                 this.setTechStack(sc.nextLine());
-                break;
-            case 0:
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Wrong input. Please try again.");
+            }
+            case 0 -> System.exit(0);
+            default -> System.out.println("Wrong input. Please try again.");
         }
     }
 

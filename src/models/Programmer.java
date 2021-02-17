@@ -110,9 +110,9 @@ public class Programmer extends Employee implements Manageable {
             case 1 -> {
                 System.out.print("New name: ");
                 System.out.println("Input First name:");
-                this.setFirstName(sc.nextLine());
+                this.setFirstName(readString());
                 System.out.println("Input Last name:");
-                this.setLastName(sc.nextLine());
+                this.setLastName(readString());
                 break;
             }
             case 2 -> {
