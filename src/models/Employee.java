@@ -20,7 +20,8 @@ public class Employee {
     private static double noOfFemaleEmployees;
     static double noOfOtherGenderEmployees;
 
-    public static Comparator<Employee> sortByNameAndSalary = Comparator.comparing(Employee::getName).thenComparing(Employee::getSalary);
+    // Comparable objekt för att jämföra värden och sortera. Kolla UI.
+    public static Comparator<Employee> sortByNameAndSalary = Comparator.comparing(Employee::getName).thenComparing(Employee::getSalary); // :: betyder ...
     public static Comparator<Employee> sortByFirstNameAscending = Comparator.comparing(e -> e.getFirstName());
     public static Comparator<Employee> sortByFirstNameDescending = Comparator.comparing(e -> e.getFirstName());
     public static Comparator<Employee> sortByLastNameAscending = Comparator.comparing(e -> e.getLastName());
