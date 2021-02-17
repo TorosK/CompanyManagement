@@ -15,6 +15,7 @@ public class TestSpecialist extends Employee implements Manageable {
     private static double noOfTestSpecialists;
     private static double noOfMaleTestSpecialists;
     private static double noOfFemaleTestSpecialists;
+    private static double noOfOtherTestSpecialists;
 
     {
         noOfTestSpecialists++;
@@ -28,6 +29,14 @@ public class TestSpecialist extends Employee implements Manageable {
         super(firstName, lastName, gender, salary);
         this.ISTQBcertified = ISTQBcertified;
 
+    }
+
+    public static double getNoOfOtherTestSpecialists() {
+        return noOfOtherTestSpecialists;
+    }
+
+    public static void setNoOfOtherTestSpecialists(double aNoOfOtherTestSpecialists) {
+        noOfOtherTestSpecialists = aNoOfOtherTestSpecialists;
     }
 
     public boolean isISTQBcertified() {
@@ -63,24 +72,35 @@ public class TestSpecialist extends Employee implements Manageable {
     }
 
     public void genderCounter() {
+
         super.genderCounter();
+
         if (this.getGender().getText().equalsIgnoreCase("male")) {
+            
             noOfMaleTestSpecialists += 1;
+            
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
+            
             noOfFemaleTestSpecialists += 1;
+            
+        } else if (this.getGender().getText().equalsIgnoreCase("other")) {
+
+            noOfOtherTestSpecialists++;
         }
     }
 
     @Override
     public void genderDecrementer() {
+
         super.genderDecrementer();
+
         noOfTestSpecialists--;
         if (this.getGender().getText().equalsIgnoreCase("male")) {
             noOfMaleTestSpecialists--;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
             noOfFemaleTestSpecialists--;
-        } else {
-            Employee.noOfOtherGenderEmployees--;
+        } else if (this.getGender().getText().equalsIgnoreCase("other")) {
+            noOfOtherTestSpecialists--;
         }
     }
 

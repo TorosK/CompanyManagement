@@ -16,6 +16,7 @@ public class Programmer extends Employee implements Manageable {
     private static double noOfProgrammers;
     private static double noOfMaleProgrammers;
     private static double noOfFemaleProgrammers;
+    private static double noOfOtherProgrammers;
 
     {
 //        System.out.println("Number of Programmers" + noOfProgrammers);
@@ -35,6 +36,14 @@ public class Programmer extends Employee implements Manageable {
         super(firstName, lastName, gender, salary);
         this.codeLang = codeLang;
 
+    }
+
+    public static double getNoOfOtherProgrammers() {
+        return noOfOtherProgrammers;
+    }
+
+    public static void setNoOfOtherProgrammers(double aNoOfOtherProgrammers) {
+        noOfOtherProgrammers = aNoOfOtherProgrammers;
     }
 
     public static double getNoOfProgrammers() {
@@ -81,23 +90,32 @@ public class Programmer extends Employee implements Manageable {
     public void genderCounter() {
         super.genderCounter();
         if (this.getGender().getText().equalsIgnoreCase("male")) {
+            
             noOfMaleProgrammers++;
 
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
+            
             noOfFemaleProgrammers++;
+            
+        } else if (this.getGender().getText().equalsIgnoreCase("other")) {
+            
+            noOfOtherProgrammers++;
         }
     }
 
     @Override
     public void genderDecrementer() {
+
         super.genderDecrementer();
+
         noOfProgrammers--;
+
         if (this.getGender().getText().equalsIgnoreCase("male")) {
             noOfMaleProgrammers--;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
             noOfFemaleProgrammers--;
-        } else {
-            Employee.noOfOtherGenderEmployees--;
+        } else if (this.getGender().getText().equalsIgnoreCase("other")) {
+            noOfOtherProgrammers--;
         }
     }
 

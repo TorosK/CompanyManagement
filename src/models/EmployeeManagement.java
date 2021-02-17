@@ -127,20 +127,21 @@ public class EmployeeManagement {
 
     public static void calculateAverageSalary() {
 
-        double averageSalaray = 0;
+        double averageSalary = 0;
 
         for (int i = 0; i < employees.size(); i++) {
 
-            averageSalaray = employees.get(i).getSalary() + averageSalaray;
+            averageSalary = employees.get(i).getSalary() + averageSalary;
         }
 
-        System.out.println("The average salaray for all the employees: " + averageSalaray / employees.size());
+        System.out.println("The average salary for all the employees: " + df.format(averageSalary / employees.size()));
     }
 
     public static void genderDistribution() {
 
         System.out.println("Male employees percentage: " + df.format((Employee.getNoOfMaleEmployees() * 100) / employees.size()) + "%");
         System.out.println("Female employees percentage: " + df.format((Employee.getNoOfFemaleEmployees() * 100) / employees.size()) + "%");
+        System.out.println("Other gender employees percentage: " + df.format((Employee.getNoOfOtherGenderEmployees() * 100) / employees.size()) + "%");
 
         System.out.println("\nGender distribution among employees respective their professional role");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
@@ -150,6 +151,7 @@ public class EmployeeManagement {
 
         System.out.println("Male programmers percentage: " + df.format((Programmer.getNoOfMaleProgrammers() * 100) / Programmer.getNoOfProgrammers()) + "%");
         System.out.println("Female programmers percentage: " + df.format((Programmer.getNoOfFemaleProgrammers() * 100) / Programmer.getNoOfProgrammers()) + "%");
+        System.out.println("Other gender programmers percentage: " + df.format((Programmer.getNoOfOtherProgrammers() * 100) / Programmer.getNoOfProgrammers()) + "%");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
         System.out.println("\nPercentage distribution among Graphic Designers:");
 
@@ -157,6 +159,7 @@ public class EmployeeManagement {
 
         System.out.println("Male Graphic Designers percentage: " + df.format((GraphicDesigner.getNoOfMaleGraphicDesigners() * 100) / GraphicDesigner.getNoOfGraphicDesigners()) + "%");
         System.out.println("Female Graphic Designers percentage: " + df.format((GraphicDesigner.getNoOfFemaleGraphicDesigners() * 100) / GraphicDesigner.getNoOfGraphicDesigners()) + "%");
+        System.out.println("Other gender Graphic Designers percentage: " + df.format((GraphicDesigner.getNoOfOtherGraphicDesigners() * 100) / GraphicDesigner.getNoOfGraphicDesigners()) + "%");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
         System.out.println("\nPercentage distribution among Test Specialists:");
 
@@ -164,11 +167,9 @@ public class EmployeeManagement {
 
         System.out.println("Male Test Specialists percentage: " + df.format((TestSpecialist.getNoOfMaleTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()) + "%");
         System.out.println("Female Test Specialists percentage: " + df.format((TestSpecialist.getNoOfFemaleTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()) + "%");
+        System.out.println("Other gender Test Specialists percentage: " + df.format((TestSpecialist.getNoOfOtherTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()) + "%");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("\nPercentage distribution among other category for gender");
-
-        System.out.println("Other gender for employees percentage: " + df.format((Employee.noOfOtherGenderEmployees * 100) / employees.size()) + "%");
-
+        
     }
 
     public static void findHighestPaidEmployee() {

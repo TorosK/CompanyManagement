@@ -11,6 +11,7 @@ public class GraphicDesigner extends Employee implements Manageable {
     private static double noOfGraphicDesigners;
     private static double noOfMaleGraphicDesigners;
     private static double noOfFemaleGraphicDesigners;
+    private static double noOfOtherGraphicDesigners;
 
     {
         noOfGraphicDesigners++;
@@ -24,6 +25,14 @@ public class GraphicDesigner extends Employee implements Manageable {
         super(firstName, lastName, gender, salary);
         this.techStack = techStack;
 
+    }
+
+    public static double getNoOfOtherGraphicDesigners() {
+        return noOfOtherGraphicDesigners;
+    }
+
+    public static void setNoOfOtherGraphicDesigners(double aNoOfOtherGraphicDesigners) {
+        noOfOtherGraphicDesigners = aNoOfOtherGraphicDesigners;
     }
 
     public String getTechStack() {
@@ -70,24 +79,34 @@ public class GraphicDesigner extends Employee implements Manageable {
 
     @Override
     public void genderCounter() {
+        
         super.genderCounter();
+        
         if (this.getGender().getText().equalsIgnoreCase("male")) {
+            
             noOfMaleGraphicDesigners++;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
+            
             noOfFemaleGraphicDesigners++;
+        } else if (this.getGender().getText().equalsIgnoreCase("other")) {
+
+            noOfOtherGraphicDesigners++;
         }
     }
 
     @Override
     public void genderDecrementer() {
+
         super.genderDecrementer();
+
         noOfGraphicDesigners--;
+
         if (this.getGender().getText().equalsIgnoreCase("male")) {
             noOfMaleGraphicDesigners--;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
             noOfFemaleGraphicDesigners--;
-        } else {
-            Employee.noOfOtherGenderEmployees--;
+        } else if (this.getGender().getText().equalsIgnoreCase("other")) {
+            noOfOtherGraphicDesigners--;
         }
     }
 
@@ -117,8 +136,10 @@ public class GraphicDesigner extends Employee implements Manageable {
                 System.out.println("New tech stack: ");
                 this.setTechStack(sc.nextLine());
             }
-            case 0 -> System.exit(0);
-            default -> System.out.println("Wrong input. Please try again.");
+            case 0 ->
+                System.exit(0);
+            default ->
+                System.out.println("Wrong input. Please try again.");
         }
     }
 

@@ -13,11 +13,14 @@ public class Utilities {
         employees.add(new Programmer("Java", "Toros", "Kutlu", Gender.MALE, 50000.25));
         employees.add(new Programmer("Python", "Åsa", "Karlsson", Gender.FEMALE, 60000.50));
         employees.add(new Programmer("C#", "Ängla", "Karlsson", Gender.FEMALE, 60000.50));
+        employees.add(new Programmer("C#", "Ängla", "Karlsson", Gender.OTHER, 60000.50));
         employees.add(new GraphicDesigner("PhotoShop", "Sara", "Anderson", Gender.FEMALE, 40000));
         employees.add(new GraphicDesigner("Gimp", "Urban", "Petri", Gender.MALE, 35000.999));
         employees.add(new GraphicDesigner("Gimp", "Öjar", "Urban", Gender.MALE, 35000.999));
+        employees.add(new GraphicDesigner("Gimp", "Öjar", "Urban", Gender.OTHER, 35000.999));
         employees.add(new TestSpecialist(true, "Maria", "Pirat", Gender.FEMALE, 6500));
         employees.add(new TestSpecialist(false, "Björn", "Karlsson", Gender.MALE, 6500));
+        employees.add(new TestSpecialist(false, "Björn", "Karlsson", Gender.OTHER, 6500));
         employees.add(new TestSpecialist(false, "Lara", "Karlsson", Gender.FEMALE, 165000.8776554435));
         employees.add(new TestSpecialist(false, "Lara", "Karlsson", Gender.FEMALE, 165000.3776554435));
         employees.add(new TestSpecialist(false, "Lara", "Karlsson", Gender.FEMALE, 165000.1776554435));
@@ -50,21 +53,17 @@ public class Utilities {
         while (loop) {
             try {
                 str = sc.nextLine();
-                double d = Double.parseDouble(str);
                 if (!((str.isBlank() || str.isEmpty() || isNumeric(str)))) {
                     loop = false;
                 } else {
                     System.out.println("Invalid input. Please try again.");
                 }
-
             } catch (InputMismatchException e) {
                 sc.nextLine();
                 System.out.println("Invalid input. Please try again.");
             }
-
         } // loop
         return str;
-
     }
 
     public static double readDouble() {

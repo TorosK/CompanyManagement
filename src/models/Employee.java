@@ -9,6 +9,14 @@ import static models.EmployeeManagement.df;
 public class Employee {
 
     public static int employeeNumberGenerator = 1;
+
+    public static double getNoOfOtherGenderEmployees() {
+        return noOfOtherGenderEmployees;
+    }
+
+    public static void setNoOfOtherGenderEmployees(double aNoOfOtherGenderEmployees) {
+        noOfOtherGenderEmployees = aNoOfOtherGenderEmployees;
+    }
     private int employeeNr;
     private String firstName;
     private String lastName;
@@ -18,7 +26,7 @@ public class Employee {
     private double salaryWithBonus;
     private static double noOfMaleEmployees;
     private static double noOfFemaleEmployees;
-    static double noOfOtherGenderEmployees;
+    private static double noOfOtherGenderEmployees;
 
     // Comparable objekt för att jämföra värden och sortera. Kolla UI.
     public static Comparator<Employee> sortByNameAndSalary = Comparator.comparing(Employee::getName).thenComparing(Employee::getSalary); // :: betyder ...
@@ -141,7 +149,7 @@ public class Employee {
             noOfMaleEmployees++;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
             noOfFemaleEmployees++;
-        } else {
+        } else if (this.getGender().getText().equalsIgnoreCase("other")) {
             noOfOtherGenderEmployees++;
         }
     }
@@ -152,7 +160,7 @@ public class Employee {
             noOfMaleEmployees--;
         } else if (this.getGender().getText().equalsIgnoreCase("female")) {
             noOfFemaleEmployees--;
-        } else {
+        } else if (this.getGender().getText().equalsIgnoreCase("other")){
             noOfOtherGenderEmployees--;
         }
     }
