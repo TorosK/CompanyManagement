@@ -35,7 +35,7 @@ public class Utilities {
             return false;
         }
         try {
-            double d = Double.parseDouble(strNum);
+            int i = Integer.parseInt(strNum);
         } catch (NumberFormatException nfe) {
             return false;
         }
