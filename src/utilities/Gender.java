@@ -76,7 +76,8 @@ public enum Gender {
     public void setText(String text) {
         this.text = text;
     }
-
+    
+    //take input from user and check for integer or string and call respective fucntion.
     public static void readGender(Employee employee) throws NumberFormatException {
         
         System.out.println("1. Male");

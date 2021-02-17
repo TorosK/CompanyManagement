@@ -5,7 +5,6 @@ import models.GraphicDesigner;
 import static models.EmployeeManagement.*;
 import models.Programmer;
 import models.TestSpecialist;
-import models.Manageable;
 
 public class Utilities {
 
