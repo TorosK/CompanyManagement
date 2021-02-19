@@ -1,6 +1,12 @@
 package utilities;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.LineNumberReader;
 import java.util.InputMismatchException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.GraphicDesigner;
 import static models.EmployeeManagement.*;
 import models.Programmer;
@@ -24,6 +30,9 @@ public class Utilities {
         employees.add(new TestSpecialist(false, "Lara", "Karlsson", Gender.FEMALE, 165000.8776554435));
         employees.add(new TestSpecialist(false, "Lara", "Karlsson", Gender.FEMALE, 165000.3776554435));
         employees.add(new TestSpecialist(false, "Lara", "Karlsson", Gender.FEMALE, 165000.1776554435));
+        
+
+        
 
         employees.forEach(employee -> {
             employee.bonus();
