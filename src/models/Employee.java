@@ -2,7 +2,6 @@ package models;
 
 import java.util.Comparator;
 import static utilities.Utilities.*;
-import static models.EmployeeManagement.sc;
 import utilities.Gender;
 import static models.EmployeeManagement.df;
 
@@ -27,7 +26,7 @@ public class Employee {
     private static double noOfMaleEmployees;
     private static double noOfFemaleEmployees;
     private static double noOfOtherGenderEmployees;
-
+    
     // Comparable objekt för att jämföra värden och sortera. Kolla UI.
     public static Comparator<Employee> sortByNameAndSalary = Comparator.comparing(Employee::getName).thenComparing(Employee::getSalary); // :: betyder ...
     public static Comparator<Employee> sortByFirstNameAscending = Comparator.comparing(e -> e.getFirstName());

@@ -43,7 +43,10 @@ public class Utilities {
             return false;
         }
         return true;
+        
     }
+    
+    
 
     public static String readString() {
 
@@ -136,4 +139,28 @@ public class Utilities {
         System.out.println("ID              Name            Gender          Salary          Salary & Bonus  Qualifications");
     }
 
+//    public static String readAlphabet(String s) {​​
+//    Scanner sc = new Scanner(System.in);
+//    boolean tryingAlphabet = true;
+//    String text = s;
+//    while (tryingAlphabet) {​​
+//
+//        String patternString = "[a-zA-Z]*$";
+//        Pattern pattern = Pattern.compile(patternString);
+//        Matcher matcher = pattern.matcher(text);
+//        boolean matches = matcher.matches();
+//        if (matches && !text.equals("")) {​​
+//            tryingAlphabet = false;
+//            return text;
+//        }​​ else {​​
+//            System.out.println("Only Alphabet valid!");
+//            text = sc.nextLine();
+//        }​​
+//
+//    }​​
+//    return text;
+//
+//}​​
+    
+    
 }
