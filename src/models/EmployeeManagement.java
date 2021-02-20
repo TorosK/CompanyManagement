@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import utilities.EmployeeNotFoundException;
 import static utilities.Utilities.*;
-import utilities.EmployeeNotFoundException.*;
 
 public class EmployeeManagement {
 
@@ -42,15 +41,21 @@ public class EmployeeManagement {
     public static void printEmployeeByID() {
 
         printAllEmployees();
-
+        Employee e;
         System.out.println("\n\nPlease input employee number:");
-        System.out.println(getEmployeeById(readInt()));
+        e = getEmployeeById(readInt());
+            if (e != null) {
+            System.out.println("\n=================================================================================================================================================");
+            System.out.println(e);
+            System.out.println("=================================================================================================================================================\n");
+        }
+//        System.out.println(getEmployeeById(readInt()));
 
         System.out.println("");
     }
 
     // changed
-    public static void removeEmployeeByID() throws EmployeeNotFoundException {
+    public static void removeEmployeeByID() {
 
         printAllEmployees();
 
@@ -68,37 +73,31 @@ public class EmployeeManagement {
 
         printAllEmployees();
     }
-    
+
     // not used yet
     public static Employee getEmployeeById(int employeeId) {
-
-        
-        
         try {
-            Employee employee = employees.get(employeeId);
-            
-            return employee;
-          
+            for (int i = 0; i < employees.size(); i++) {
+
+                if (employees.get(i).getEmployeeNr() == employeeId) {
+
+                    return (employees.get(i));
+                }
+            }
+            throw new EmployeeNotFoundException("The Employee you are looking for is not found");
+        } catch (EmployeeNotFoundException e) {
+           
+//            e.printStackTrace();
+ 
+//            System.out.println(e.getMessage());
+
+            System.out.println("\n====================================");
+            System.out.println("Employee not found, Please try again!");
+            System.out.println("=====================================\n");
+
+            return null;
         }
-        catch (EmployeeNotFoundException enfe) {
-            System.out.println("Exception!");
-            
-            
-        }
-        
-//        for (int i = 0; i < employees.size(); i++) {
-//
-//            if (employees.get(i).getEmployeeNr() == employeeId) {
-//
-//                return (employees.get(i));
-//            }
-//        }
-//
-//        System.out.println("\n====================================");
-//        System.out.println("Employee not found, Please try again!");
-//        System.out.println("=====================================\n");
-//
-//        return null;
+
     }
 
     public static void removeEmployeeByName() {
@@ -187,7 +186,7 @@ public class EmployeeManagement {
         System.out.println("Female Test Specialists percentage: " + df.format((TestSpecialist.getNoOfFemaleTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()) + "%");
         System.out.println("Other gender Test Specialists percentage: " + df.format((TestSpecialist.getNoOfOtherTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()) + "%");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
-        
+
     }
 
     public static void findHighestPaidEmployee() {
