@@ -3,6 +3,7 @@
 package models;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.RuleBasedCollator;
 import java.util.*;
@@ -17,8 +18,16 @@ public class EmployeeManagement {
     public static Scanner sc = new Scanner(System.in, "Windows-1252");
     // System.setProperty("file.encoding", "UTF-8");
     public static ArrayList<Employee> employees = new ArrayList<>();
-    public static DecimalFormat df = new DecimalFormat("###.##");
+    public static NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
+    public static DecimalFormat decimalFormatter = new DecimalFormat("###.##");
 
+
+//    NumberFormat nf = NumberFormat.getNumberInstance();
+//DecimalFormat decimalFormatter = (DecimalFormat)nf;
+//df.applyPattern(pattern);
+//String output = decimalFormatter.format(value);
+//    
+    
     public static void updateEmployeeByID() {
 
         Employee e;
@@ -41,15 +50,17 @@ public class EmployeeManagement {
     public static void printEmployeeByID() {
 
         printAllEmployees();
+
         Employee e;
+
         System.out.println("\n\nPlease input employee number:");
         e = getEmployeeById(readInt());
-            if (e != null) {
+
+        if (e != null) {
             System.out.println("\n=================================================================================================================================================");
             System.out.println(e);
             System.out.println("=================================================================================================================================================\n");
         }
-//        System.out.println(getEmployeeById(readInt()));
 
         System.out.println("");
     }
@@ -63,6 +74,7 @@ public class EmployeeManagement {
 
         System.out.println("Please input employee number:");
         e = getEmployeeById(readInt());
+
         if (e != null) {
             e.genderDecrementer();
             employees.remove(e);
@@ -76,7 +88,9 @@ public class EmployeeManagement {
 
     // not used yet
     public static Employee getEmployeeById(int employeeId) {
+
         try {
+
             for (int i = 0; i < employees.size(); i++) {
 
                 if (employees.get(i).getEmployeeNr() == employeeId) {
@@ -84,13 +98,13 @@ public class EmployeeManagement {
                     return (employees.get(i));
                 }
             }
-            throw new EmployeeNotFoundException("The Employee you are looking for is not found");
-        } catch (EmployeeNotFoundException e) {
-           
-//            e.printStackTrace();
- 
-//            System.out.println(e.getMessage());
 
+            throw new EmployeeNotFoundException("The Employee you are looking for is not found");
+
+        } catch (EmployeeNotFoundException e) {
+
+//            e.printStackTrace();
+//            System.out.println(e.getMessage());
             System.out.println("\n====================================");
             System.out.println("Employee not found, Please try again!");
             System.out.println("=====================================\n");
@@ -110,9 +124,9 @@ public class EmployeeManagement {
 
         System.out.println("Please input full name of employee:");
         String empName = readString();
+
 //        System.out.println(empName);
 //        System.out.println(employees.get(0).getName());
-
 //        Predicate<Employee> condition = employee -> employee.getName().equalsIgnoreCase(empName);
 //        employees.removeIf(employee -> employee.getName().equalsIgnoreCase(empName));
         for (int i = (employees.size() - 1); i >= 0; i--) {
@@ -151,40 +165,40 @@ public class EmployeeManagement {
             averageSalary = employees.get(i).getSalary() + averageSalary;
         }
 
-        System.out.println("The average salary for all the employees: " + df.format(averageSalary / employees.size()));
+        System.out.println("The average salary for all the employees: " + currencyFormatter.format(averageSalary / employees.size()));
     }
 
     public static void genderDistribution() {
 
-        System.out.println("Male employees percentage: " + df.format((Employee.getNoOfMaleEmployees() * 100) / employees.size()) + "%");
-        System.out.println("Female employees percentage: " + df.format((Employee.getNoOfFemaleEmployees() * 100) / employees.size()) + "%");
-        System.out.println("Other gender employees percentage: " + df.format((Employee.getNoOfOtherGenderEmployees() * 100) / employees.size()) + "%");
+        System.out.println("Male employees percentage: " + decimalFormatter.format((Employee.getNoOfMaleEmployees() * 100) / employees.size()) + "%");
+        System.out.println("Female employees percentage: " + decimalFormatter.format((Employee.getNoOfFemaleEmployees() * 100) / employees.size()) + "%");
+        System.out.println("Other gender employees percentage: " + decimalFormatter.format((Employee.getNoOfOtherGenderEmployees() * 100) / employees.size()) + "%");
 
         System.out.println("\nGender distribution among employees respective their professional role");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
         System.out.println("\nPercentage distribution among Programmers:");
 
-        System.out.println("Programmers percentage: " + df.format((Programmer.getNoOfProgrammers() * 100) / employees.size()) + "%");
+        System.out.println("Programmers percentage: " + decimalFormatter.format((Programmer.getNoOfProgrammers() * 100) / employees.size()) + "%");
 
-        System.out.println("Male programmers percentage: " + df.format((Programmer.getNoOfMaleProgrammers() * 100) / Programmer.getNoOfProgrammers()) + "%");
-        System.out.println("Female programmers percentage: " + df.format((Programmer.getNoOfFemaleProgrammers() * 100) / Programmer.getNoOfProgrammers()) + "%");
-        System.out.println("Other gender programmers percentage: " + df.format((Programmer.getNoOfOtherProgrammers() * 100) / Programmer.getNoOfProgrammers()) + "%");
+        System.out.println("Male programmers percentage: " + decimalFormatter.format((Programmer.getNoOfMaleProgrammers() * 100) / Programmer.getNoOfProgrammers()) + "%");
+        System.out.println("Female programmers percentage: " + decimalFormatter.format((Programmer.getNoOfFemaleProgrammers() * 100) / Programmer.getNoOfProgrammers()) + "%");
+        System.out.println("Other gender programmers percentage: " + decimalFormatter.format((Programmer.getNoOfOtherProgrammers() * 100) / Programmer.getNoOfProgrammers()) + "%");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
         System.out.println("\nPercentage distribution among Graphic Designers:");
 
-        System.out.println("Graphic Designers percentage: " + df.format((GraphicDesigner.getNoOfGraphicDesigners() * 100) / employees.size()) + "%");
+        System.out.println("Graphic Designers percentage: " + decimalFormatter.format((GraphicDesigner.getNoOfGraphicDesigners() * 100) / employees.size()) + "%");
 
-        System.out.println("Male Graphic Designers percentage: " + df.format((GraphicDesigner.getNoOfMaleGraphicDesigners() * 100) / GraphicDesigner.getNoOfGraphicDesigners()) + "%");
-        System.out.println("Female Graphic Designers percentage: " + df.format((GraphicDesigner.getNoOfFemaleGraphicDesigners() * 100) / GraphicDesigner.getNoOfGraphicDesigners()) + "%");
-        System.out.println("Other gender Graphic Designers percentage: " + df.format((GraphicDesigner.getNoOfOtherGraphicDesigners() * 100) / GraphicDesigner.getNoOfGraphicDesigners()) + "%");
+        System.out.println("Male Graphic Designers percentage: " + decimalFormatter.format((GraphicDesigner.getNoOfMaleGraphicDesigners() * 100) / GraphicDesigner.getNoOfGraphicDesigners()) + "%");
+        System.out.println("Female Graphic Designers percentage: " + decimalFormatter.format((GraphicDesigner.getNoOfFemaleGraphicDesigners() * 100) / GraphicDesigner.getNoOfGraphicDesigners()) + "%");
+        System.out.println("Other gender Graphic Designers percentage: " + decimalFormatter.format((GraphicDesigner.getNoOfOtherGraphicDesigners() * 100) / GraphicDesigner.getNoOfGraphicDesigners()) + "%");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
         System.out.println("\nPercentage distribution among Test Specialists:");
 
-        System.out.println("Test Specialists percentage: " + df.format((TestSpecialist.getNoOfTestSpecialists() * 100) / employees.size()) + "%");
+        System.out.println("Test Specialists percentage: " + decimalFormatter.format((TestSpecialist.getNoOfTestSpecialists() * 100) / employees.size()) + "%");
 
-        System.out.println("Male Test Specialists percentage: " + df.format((TestSpecialist.getNoOfMaleTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()) + "%");
-        System.out.println("Female Test Specialists percentage: " + df.format((TestSpecialist.getNoOfFemaleTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()) + "%");
-        System.out.println("Other gender Test Specialists percentage: " + df.format((TestSpecialist.getNoOfOtherTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()) + "%");
+        System.out.println("Male Test Specialists percentage: " + decimalFormatter.format((TestSpecialist.getNoOfMaleTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()) + "%");
+        System.out.println("Female Test Specialists percentage: " + decimalFormatter.format((TestSpecialist.getNoOfFemaleTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()) + "%");
+        System.out.println("Other gender Test Specialists percentage: " + decimalFormatter.format((TestSpecialist.getNoOfOtherTestSpecialists() * 100) / TestSpecialist.getNoOfTestSpecialists()) + "%");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
 
     }
@@ -243,7 +257,7 @@ public class EmployeeManagement {
             totalBonus = employee.getBonus() + totalBonus;
 
         }
-        System.out.println("Total bonus for all the employees: " + totalBonus);
+        System.out.println("Total bonus for all the employees: " + currencyFormatter.format(totalBonus));
     }
 
     public static void totalProgrammersBonusPayments() {

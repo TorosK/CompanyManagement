@@ -3,7 +3,7 @@ package models;
 import java.util.Comparator;
 import static utilities.Utilities.*;
 import utilities.Gender;
-import static models.EmployeeManagement.df;
+import static models.EmployeeManagement.currencyFormatter;
 
 public class Employee {
 
@@ -183,7 +183,7 @@ public class Employee {
     @Override
     public String toString() {
 
-        return theStringTrimmer(String.valueOf(employeeNr)) + theStringTrimmer(getName()) + theStringTrimmer(gender.getText()) + theStringTrimmer(df.format(salary)) + theStringTrimmer(df.format(salaryWithBonus));
+        return theStringTrimmer(String.valueOf(employeeNr)) + theStringTrimmer(getName()) + theStringTrimmer(gender.getText()) + theStringTrimmer(currencyFormatter.format(salary)) + theStringTrimmer(currencyFormatter.format(salaryWithBonus));
 
     }
 }

@@ -239,40 +239,39 @@ public class Utilities {
 //    return text;
 //
 //}​​
-    
-    // not used yet
-    public static void methodX(double myNumber) {
+    public static void numberformatter() {
         Locale[] locales = NumberFormat.getAvailableLocales();
-        // double myNumber = -1234.56;
-        Locale currentLocale = new Locale.Builder().setLanguage("sv").setRegion("SE").build();
-        NumberFormat form = NumberFormat.getInstance(currentLocale);
-        // for (int j=0;j<4;++j) 
+        double myNumber = -1234.56;
+        NumberFormat form;
         for (int j = 0; j < 4; ++j) {
             System.out.println("FORMAT");
-//            for (int i = 0; i < locales.length; ++i) {
-
-            System.out.print(currentLocale.getDisplayName());
-            switch (j) {
-                case 0:
-                    form = NumberFormat.getInstance(currentLocale);
-                    break;
-                case 1:
-                    form = NumberFormat.getIntegerInstance(currentLocale);
-                    break;
-                case 2:
-                    form = NumberFormat.getCurrencyInstance(currentLocale);
-                    break;
-                default:
-                    form = NumberFormat.getPercentInstance(currentLocale);
-                    break;
-            }
-            if (form instanceof DecimalFormat) {
-                System.out.print(": " + ((DecimalFormat) form).toPattern());
-            }
-            System.out.print(" -> " + form.format(myNumber));
-            try {
-                System.out.println(" -> " + form.parse(form.format(myNumber)));
-            } catch (ParseException e) {
+            for (int i = 0; i < locales.length; ++i) {
+                if (locales[i].getCountry().length() == 0) {
+                    continue; // Skip language-only locales
+                }
+                System.out.print(locales[i].getDisplayName());
+                switch (j) {
+                    case 0:
+                        form = NumberFormat.getInstance(locales[i]);
+                        break;
+                    case 1:
+                        form = NumberFormat.getIntegerInstance(locales[i]);
+                        break;
+                    case 2:
+                        form = NumberFormat.getCurrencyInstance(locales[i]);
+                        break;
+                    default:
+                        form = NumberFormat.getPercentInstance(locales[i]);
+                        break;
+                }
+                if (form instanceof DecimalFormat) {
+                    System.out.print(": " + ((DecimalFormat) form).toPattern());
+                }
+                System.out.print(" -> " + form.format(myNumber));
+                try {
+                    System.out.println(" -> " + form.parse(form.format(myNumber)));
+                } catch (ParseException e) {
+                }
             }
         }
     }

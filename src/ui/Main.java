@@ -1,24 +1,34 @@
 package ui;
 
 // import static utilities.Utilities.readDouble2;
-
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
 import static models.EmployeeManagement.sc;
 import utilities.EmployeeNotFoundException;
-import static utilities.Utilities.methodX;
 
 // import static utilities.Utilities.readInt2;
 public class Main {
 
     public static void main(String[] args) {
 
+//        NumberFormat nf;
+
         // double d = readDouble2();
         // System.out.println(d);
         // int i = readInt2();
         // System.out.println(i);
-        
 //            System.out.println("enter number");
-//            methodX(sc.nextDouble());
-            
+////            methodX(sc.nextDouble());
+//        System.out.println("Enter the Number");
+//        Double myNumber = sc.nextDouble();
+//        sc.nextLine();
+//
+//        
+//        NumberFormat nSE = NumberFormat.getInstance(new Locale("sv","SE"));
+//        System.out.println(nSE.format(myNumber));
+
         try{
          UI.runProgram();
          throw new EmployeeNotFoundException("The Employee you looking is not found");
@@ -29,9 +39,6 @@ public class Main {
         }
     }
 }
-
-
-
 
 //    public static Employee getEmployeeById(int employeeId) {
 //        try {
