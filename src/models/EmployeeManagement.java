@@ -8,7 +8,9 @@ import java.text.RuleBasedCollator;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import utilities.EmployeeNotFoundException;
 import static utilities.Utilities.*;
+import utilities.EmployeeNotFoundException.*;
 
 public class EmployeeManagement {
 
@@ -47,7 +49,8 @@ public class EmployeeManagement {
         System.out.println("");
     }
 
-    public static void removeEmployeeByID() {
+    // changed
+    public static void removeEmployeeByID() throws EmployeeNotFoundException {
 
         printAllEmployees();
 
@@ -65,22 +68,37 @@ public class EmployeeManagement {
 
         printAllEmployees();
     }
-
+    
+    // not used yet
     public static Employee getEmployeeById(int employeeId) {
 
-        for (int i = 0; i < employees.size(); i++) {
-
-            if (employees.get(i).getEmployeeNr() == employeeId) {
-
-                return (employees.get(i));
-            }
+        
+        
+        try {
+            Employee employee = employees.get(employeeId);
+            
+            return employee;
+          
         }
-
-        System.out.println("\n====================================");
-        System.out.println("Employee not found, Please try again!");
-        System.out.println("=====================================\n");
-
-        return null;
+        catch (EmployeeNotFoundException enfe) {
+            System.out.println("Exception!");
+            
+            
+        }
+        
+//        for (int i = 0; i < employees.size(); i++) {
+//
+//            if (employees.get(i).getEmployeeNr() == employeeId) {
+//
+//                return (employees.get(i));
+//            }
+//        }
+//
+//        System.out.println("\n====================================");
+//        System.out.println("Employee not found, Please try again!");
+//        System.out.println("=====================================\n");
+//
+//        return null;
     }
 
     public static void removeEmployeeByName() {

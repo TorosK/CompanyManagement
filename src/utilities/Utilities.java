@@ -4,7 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.LineNumberReader;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.InputMismatchException;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.GraphicDesigner;
@@ -30,9 +34,6 @@ public class Utilities {
         employees.add(new TestSpecialist(false, "Lara", "Karlsson", Gender.FEMALE, 165000.8776554435));
         employees.add(new TestSpecialist(false, "Lara", "Karlsson", Gender.FEMALE, 165000.3776554435));
         employees.add(new TestSpecialist(false, "Lara", "Karlsson", Gender.FEMALE, 165000.1776554435));
-        
-
-        
 
         employees.forEach(employee -> {
             employee.bonus();
@@ -52,10 +53,8 @@ public class Utilities {
             return false;
         }
         return true;
-        
+
     }
-    
-    
 
     public static String readString() {
 
@@ -78,6 +77,13 @@ public class Utilities {
         return str;
     }
 
+    // below method becomes problematic if user inputs double such as 600 000
+    // and 600,000. 
+    // 600 000 becomes 600 instead of 600000.
+    // 600,000 becomes 600000 instead of 600.00.
+    // Decimal sign in Swedish (and some other languages) is , but in English it is .
+    // Therefore the symbol , should be transformed into .
+    // 600.000 becomes 600.00 which is correct.
     public static double readDouble() {
 
         boolean loop = true;
@@ -86,14 +92,46 @@ public class Utilities {
         while (loop) {
             try {
                 number = sc.nextDouble();
-                sc.nextLine();
+                // sc.nextLine();
                 loop = false;
             } catch (InputMismatchException e) {
-                sc.nextLine();
+                // sc.nextLine();
                 System.out.println("Invalid input. Please try again.");
+            } finally {
+                sc.nextLine();
             }
         } // loop
         return number;
+    }
+
+    // not used yet
+    public static double readDouble2() {
+
+        boolean loop = true;
+        String userInputNumberAsString;
+        double numberStringToDouble = -1;
+
+        while (loop) {
+            try {
+                userInputNumberAsString = sc.nextLine();
+                userInputNumberAsString = userInputNumberAsString.replace(" ", "");
+                userInputNumberAsString = userInputNumberAsString.replace(",", ".");
+                numberStringToDouble = Double.parseDouble(userInputNumberAsString);
+                //sc.nextLine();
+                loop = false;
+            } catch (InputMismatchException ime) {
+                //sc.nextLine();
+                System.out.println("Invalid input (error: InputMismatchException). Please input number in the format \"600 550.56\" only. No commas (,) please. Please try again.");
+            } catch (NumberFormatException nfe) {
+                //sc.nextLine();
+                System.out.println("Invalid input (error: NumberFormatException). Please input number in the format \"600 550.56\" only. No commas (,) please. Please try again.");
+            } catch (Exception e) {
+                //sc.nextLine();
+                System.out.println("Invalid input (error: other Exception). Please input number in the format \"600 550.56\" only. No commas (,) please. Please try again.");
+            }
+
+        } // loop
+        return numberStringToDouble;
     }
 
     public static boolean readBoolean() {
@@ -122,14 +160,45 @@ public class Utilities {
         while (loop) {
             try {
                 number = sc.nextInt();
-                sc.nextLine();
+                // sc.nextLine();
                 loop = false;
             } catch (InputMismatchException e) {
-                sc.nextLine();
+                // sc.nextLine();
                 System.out.println("Invalid input. Please try again.");
+            } finally {
+                sc.nextLine();
             }
         } // loop
         return number;
+    }
+
+    public static int readInt2() {
+
+        boolean loop = true;
+        String userInputNumberAsString;
+        int numberStringToInt = -1;
+
+        while (loop) {
+            try {
+                userInputNumberAsString = sc.nextLine();
+                userInputNumberAsString = userInputNumberAsString.replace(" ", "");
+                userInputNumberAsString = userInputNumberAsString.replace(",", ".");
+                numberStringToInt = Integer.parseInt(userInputNumberAsString);
+                //sc.nextLine();
+                loop = false;
+            } catch (InputMismatchException ime) {
+                //sc.nextLine();
+                System.out.println("Invalid input (error: InputMismatchException). Please input number in the format \"600 550\" only. No commas (,) or points (.) please. Please try again.");
+            } catch (NumberFormatException nfe) {
+                //sc.nextLine();
+                System.out.println("Invalid input (error: NumberFormatException). Please input number in the format \"600 550\" only. No commas (,) or points (.) please. Please try again.");
+            } catch (Exception e) {
+                //sc.nextLine();
+                System.out.println("Invalid input (error: other Exception). Please input number in the format \"600 550\" only. No commas (,) or points (.) please. Please try again.");
+            }
+
+        } // loop
+        return numberStringToInt;
     }
 
     public static String theStringTrimmer(String s) {
@@ -171,5 +240,41 @@ public class Utilities {
 //
 //}​​
     
-    
+    // not used yet
+    public static void methodX(double myNumber) {
+        Locale[] locales = NumberFormat.getAvailableLocales();
+        // double myNumber = -1234.56;
+        Locale currentLocale = new Locale.Builder().setLanguage("sv").setRegion("SE").build();
+        NumberFormat form = NumberFormat.getInstance(currentLocale);
+        // for (int j=0;j<4;++j) 
+        for (int j = 0; j < 4; ++j) {
+            System.out.println("FORMAT");
+//            for (int i = 0; i < locales.length; ++i) {
+
+            System.out.print(currentLocale.getDisplayName());
+            switch (j) {
+                case 0:
+                    form = NumberFormat.getInstance(currentLocale);
+                    break;
+                case 1:
+                    form = NumberFormat.getIntegerInstance(currentLocale);
+                    break;
+                case 2:
+                    form = NumberFormat.getCurrencyInstance(currentLocale);
+                    break;
+                default:
+                    form = NumberFormat.getPercentInstance(currentLocale);
+                    break;
+            }
+            if (form instanceof DecimalFormat) {
+                System.out.print(": " + ((DecimalFormat) form).toPattern());
+            }
+            System.out.print(" -> " + form.format(myNumber));
+            try {
+                System.out.println(" -> " + form.parse(form.format(myNumber)));
+            } catch (ParseException e) {
+            }
+        }
+    }
+
 }
