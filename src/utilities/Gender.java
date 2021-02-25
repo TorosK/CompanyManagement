@@ -17,21 +17,19 @@ public enum Gender {
 
     // Gender by code.
     public static Gender getGenderByNumericCode(int code) {
-        for (Gender gender : Gender.values()) {
 
-            switch (code) {
+        switch (code) {
 
-                case 1 -> {
-                    return Gender.MALE;
-                }
-                case 2 -> {
-                    return Gender.FEMALE;
-                }
-                case 3 -> {
-                    return Gender.OTHER;
-                }
-                default -> {
-                }
+            case 1 -> {
+                return Gender.MALE;
+            }
+            case 2 -> {
+                return Gender.FEMALE;
+            }
+            case 3 -> {
+                return Gender.OTHER;
+            }
+            default -> {
             }
         }
         return null;
@@ -39,21 +37,19 @@ public enum Gender {
 
     //Gender by String
     public static Gender getGenderByTextCode(String code) {
-        for (Gender gender : Gender.values()) {
 
-            switch (code.toLowerCase()) {
+        switch (code.toLowerCase()) {
 
-                case "male" -> {
-                    return Gender.MALE;
-                }
-                case "female" -> {
-                    return Gender.FEMALE;
-                }
-                case "other" -> {
-                    return Gender.OTHER;
-                }
-                default -> {
-                }
+            case "male" -> {
+                return Gender.MALE;
+            }
+            case "female" -> {
+                return Gender.FEMALE;
+            }
+            case "other" -> {
+                return Gender.OTHER;
+            }
+            default -> {
             }
         }
         return null;
@@ -90,24 +86,24 @@ public enum Gender {
             if (Utilities.isNumeric(genderChoice)) {
 
                 if (getGenderByNumericCode(Integer.parseInt(genderChoice)) == null) {
-                    
-                    boolReadGender = true; 
+
+                    boolReadGender = true;
                     System.out.println("Invalid input. Please try again.");
 
                 } else {
-                    
+
                     employee.setGender(getGenderByNumericCode(Integer.parseInt(genderChoice)));
                     boolReadGender = false;
                 }
             } else {
 
                 if (getGenderByTextCode(genderChoice) == null) {
-                    
+
                     boolReadGender = true;
                     System.out.println("Invalid input. Please try again.");
 
                 } else {
-                    
+
                     employee.setGender(getGenderByTextCode(genderChoice));
                     boolReadGender = false;
                 }

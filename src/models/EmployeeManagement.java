@@ -1,14 +1,10 @@
 // Toros & Farrukh 
-// 2021 feb 16
+
 package models;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.text.ParseException;
-import java.text.RuleBasedCollator;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import utilities.EmployeeNotFoundException;
 import static utilities.Utilities.*;
 
@@ -20,13 +16,6 @@ public class EmployeeManagement {
     public static ArrayList<Employee> employees = new ArrayList<>();
     public static NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
     public static DecimalFormat decimalFormatter = new DecimalFormat("###.##");
-
-
-//    NumberFormat nf = NumberFormat.getNumberInstance();
-//DecimalFormat decimalFormatter = (DecimalFormat)nf;
-//df.applyPattern(pattern);
-//String output = decimalFormatter.format(value);
-//    
     
     public static void updateEmployeeByID() {
 
@@ -86,7 +75,6 @@ public class EmployeeManagement {
         printAllEmployees();
     }
 
-    // not used yet
     public static Employee getEmployeeById(int employeeId) {
 
         try {
@@ -301,83 +289,4 @@ public class EmployeeManagement {
         }
         System.out.println("Total bonus for all the Test Specialists: " + totalTestSpecialistBonus);
     }
-
-    // Not used
-    public static void testsorting() {
-
-//        System.out.println("\nBefore sorting all the information");
-//        printAllEmployees();
-//        Comparator<Employee> sortEmployeebyName = (e1, e2) -> (int) (e1.getSalary() - e2.getSalary());
-//        employees.sort(sortEmployeebyName);
-//        System.out.println("\nAfter sorting all the information");
-//        printAllEmployees();
-        Comparator<Employee> sortByNameAcsending = (e1, e2) -> sortByEmployeeName(e1, e2);
-        Comparator<Employee> sortByNameDecending = (e1, e2) -> -sortByEmployeeName(e1, e2);
-        Comparator<Employee> sortBySalary = (e1, e2) -> -sortByEmployeeSalary(e1, e2);
-        Comparator<Employee> sortBySalaryStigande = (e1, e2) -> sortByEmployeeSalary(e1, e2);
-
-        employees.sort(sortByNameAcsending);
-
-        System.out.println("\n====================================================================================================");
-        System.out.println("\t\t\t\t\tSorted by name Ascending");
-        System.out.println("====================================================================================================");
-
-        employees.forEach(e -> {
-            System.out.println(e);
-        });
-        employees.sort(sortByNameDecending);
-
-        System.out.println("\n======================================================================================================");
-        System.out.println("\t\t\t\t\tSorted by name Decending");
-        System.out.println("======================================================================================================");
-
-        employees.forEach(e -> {
-            System.out.println(e);
-        });
-
-        employees.sort(sortBySalary);
-        System.out.println("\n======================================================================================================");
-        System.out.println("\t\t\t\t\tSorted by Salary fallande");
-        System.out.println("======================================================================================================");
-
-        employees.forEach(e -> {
-            System.out.println(e);
-        });
-
-        employees.sort(sortBySalaryStigande);
-        System.out.println("\n=======================================================================================================");
-        System.out.println("\t\t\t\t\tSorted by Salary stigande");
-        System.out.println("=======================================================================================================");
-
-        employees.forEach(e -> {
-            System.out.println(e);
-        });
-
-    }
-
-    // Not used
-    public static int sortByEmployeeName(Employee e1, Employee e2) {
-        String swedishRule = "< a,A < b,B < c,C < d,D < e,E < f,F "
-                + "< g,G < h,H < i,I < j,J < k,K < l,L "
-                + "< m,M < n,N < o,O < p,P < q,Q < r,R "
-                + "< s,S < t,T < u,U < v,V < w,W < x,X "
-                + "< y,Y < z,Z < \u00e5,\u00c5 < \u00e4,\u00c4 < \u00f6,\u00d6";
-
-        RuleBasedCollator swedishCollator = null;
-
-        try {
-            swedishCollator = new RuleBasedCollator(swedishRule);
-        } catch (ParseException ex) {
-            Logger.getLogger(EmployeeManagement.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return swedishCollator.compare(e1.getName(), e2.getName());
-    }
-
-    // Not used
-    public static int sortByEmployeeSalary(Employee e1, Employee e2) {
-
-        return Double.compare(e1.getSalary(), e2.getSalary());
-    }
-
 }

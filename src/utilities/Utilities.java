@@ -1,20 +1,8 @@
 package utilities;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.LineNumberReader;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.InputMismatchException;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import models.GraphicDesigner;
 import static models.EmployeeManagement.*;
-import models.Programmer;
-import models.TestSpecialist;
+import models.*;
 
 public class Utilities {
 
@@ -215,65 +203,5 @@ public class Utilities {
 
     public static void tableHeader() {
         System.out.println("ID              Name            Gender          Salary          Salary & Bonus  Qualifications");
-    }
-
-//    public static String readAlphabet(String s) {​​
-//    Scanner sc = new Scanner(System.in);
-//    boolean tryingAlphabet = true;
-//    String text = s;
-//    while (tryingAlphabet) {​​
-//
-//        String patternString = "[a-zA-Z]*$";
-//        Pattern pattern = Pattern.compile(patternString);
-//        Matcher matcher = pattern.matcher(text);
-//        boolean matches = matcher.matches();
-//        if (matches && !text.equals("")) {​​
-//            tryingAlphabet = false;
-//            return text;
-//        }​​ else {​​
-//            System.out.println("Only Alphabet valid!");
-//            text = sc.nextLine();
-//        }​​
-//
-//    }​​
-//    return text;
-//
-//}​​
-    public static void numberformatter() {
-        Locale[] locales = NumberFormat.getAvailableLocales();
-        double myNumber = -1234.56;
-        NumberFormat form;
-        for (int j = 0; j < 4; ++j) {
-            System.out.println("FORMAT");
-            for (int i = 0; i < locales.length; ++i) {
-                if (locales[i].getCountry().length() == 0) {
-                    continue; // Skip language-only locales
-                }
-                System.out.print(locales[i].getDisplayName());
-                switch (j) {
-                    case 0:
-                        form = NumberFormat.getInstance(locales[i]);
-                        break;
-                    case 1:
-                        form = NumberFormat.getIntegerInstance(locales[i]);
-                        break;
-                    case 2:
-                        form = NumberFormat.getCurrencyInstance(locales[i]);
-                        break;
-                    default:
-                        form = NumberFormat.getPercentInstance(locales[i]);
-                        break;
-                }
-                if (form instanceof DecimalFormat) {
-                    System.out.print(": " + ((DecimalFormat) form).toPattern());
-                }
-                System.out.print(" -> " + form.format(myNumber));
-                try {
-                    System.out.println(" -> " + form.parse(form.format(myNumber)));
-                } catch (ParseException e) {
-                }
-            }
-        }
-    }
-
+    } 
 }

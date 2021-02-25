@@ -1,12 +1,8 @@
-/**
- *
- * @author toros
- */
+
 package models;
 
-import static models.EmployeeManagement.employees;
+import static models.EmployeeManagement.*;
 import utilities.Utilities;
-import static models.EmployeeManagement.sc;
 import utilities.Gender;
 import static utilities.Utilities.*;
 
@@ -19,13 +15,7 @@ public class Programmer extends Employee implements Manageable {
     private static double noOfOtherProgrammers;
 
     {
-//        System.out.println("Number of Programmers" + noOfProgrammers);
         noOfProgrammers++;
-//        System.out.println("\n\nAn Object of Programmer class is created\n");
-//        
-//        System.out.println("\nNumber of Programmers" + noOfProgrammers);
-//        
-//        System.out.println("*******************************************");
     }
 
     public Programmer() {

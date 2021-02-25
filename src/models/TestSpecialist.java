@@ -1,13 +1,8 @@
 package models;
 
-import static models.EmployeeManagement.employees;
-import utilities.Utilities;
-import static models.EmployeeManagement.sc;
 import utilities.Gender;
-import static utilities.Utilities.readBoolean;
-import static utilities.Utilities.readDouble;
-import static utilities.Utilities.readInt;
-import static utilities.Utilities.readString;
+import static utilities.Utilities.*;
+import static models.EmployeeManagement.*;
 
 public class TestSpecialist extends Employee implements Manageable {
 
@@ -145,7 +140,7 @@ public class TestSpecialist extends Employee implements Manageable {
                 break;
             case 4:
                 System.out.println("ISTQB Certified (true / false): ");
-                this.setISTQBcertified(Utilities.readBoolean());
+                this.setISTQBcertified(readBoolean());
                 break;
             case 0:
                 System.exit(0);
@@ -167,7 +162,7 @@ public class TestSpecialist extends Employee implements Manageable {
     @Override
     public String toString() {
 
-        return super.toString() + "ISTQB Certified:" + Utilities.theStringTrimmer(String.valueOf(ISTQBcertified));
+        return super.toString() + "ISTQB Certified:" + theStringTrimmer(String.valueOf(ISTQBcertified));
     }
 
 }

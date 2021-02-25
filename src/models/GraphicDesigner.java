@@ -1,7 +1,6 @@
 package models;
 
-import static models.EmployeeManagement.employees;
-import static models.EmployeeManagement.sc;
+import static models.EmployeeManagement.*;
 import utilities.Gender;
 import static utilities.Utilities.*;
 

@@ -1,15 +1,7 @@
 package ui;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import models.Employee;
-import models.GraphicDesigner;
+import models.*;
 import static models.EmployeeManagement.*;
-import models.Programmer;
-import models.TestSpecialist;
-import utilities.EmployeeNotFoundException;
 import static utilities.Utilities.*;
 
 public class UI {
